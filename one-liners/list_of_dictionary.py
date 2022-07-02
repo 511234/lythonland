@@ -1,5 +1,5 @@
 some_list = [
-    {"code": "ALPHA", "meaning": "About to sleep"},
+    {"code": "Alpha", "meaning": "About to sleep"},
     {"code": "Bravo", "meaning": "Be yourself"},
     {"code": "Charlie", "meaning": "Consider finding a hobby"},
     {"code": "Delta", "meaning": "Dance with dolphins"},
@@ -14,7 +14,7 @@ the_whole_dict = next(
 
 
 the_whole_dict_3 = [
-    dic for dic in some_list for code in dic.values() if code == "Bravo" # dont know why dic.items() is not working :(
+    dic for dic in some_list for code in dic.values() if code == "Bravo" # dont know why dic.items() is not working
 ][0]
 
 
