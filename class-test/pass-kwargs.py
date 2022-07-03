@@ -24,7 +24,7 @@ class People:
         self.tourist_instance.print_all_kwargs()
 
 
-@dataclass  # important
+@dataclass  # doesnt need __init__
 class Tourist:
     name: str
 
@@ -42,9 +42,26 @@ class Tourist:
 
 lulu = People(name="Lulu")
 lulu()
+# hi, you are calling me
+
 lulu.print_self()
+# Printing myself as a Person
+# <__main__.People object at 0x100f08ee0>
+
 lulu.say_hi()
+# hi
+
 lulu.introduce_oneself()
+# Hi, I am Lulu
+
 lulu.print_tourist_instance_kwargs()
+# Printing kwargs
+# {}
+
 lulu.tourist_instance.print_my_name()
+# Lulu
+
 Tourist(name="Lulu").print_all_kwargs()
+# Printing kwargs
+# {}
+
