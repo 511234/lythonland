@@ -17,16 +17,25 @@ class Creator(ABC):
 
 
 class CreateProductPayloadCreator(Creator):
+    def __init__(self, source, *args, **kwargs):
+        self.source = source
+
     def make_payload_method(self) -> Product:
         return CreateProductPayload()
 
 
 class UpdateProductPayloadCreator(Creator):
+    def __init__(self, source, *args, **kwargs):
+        self.source = source
+
     def make_payload_method(self) -> Product:
         return UpdateProductPayload()
 
 
 class UpsertSpecPayloadCreator(Creator):
+    def __init__(self, source, *args, **kwargs):
+        self.source = source
+
     def make_payload_method(self) -> Product:
         return UpsertSpecPayload()
 
@@ -62,16 +71,37 @@ def client_code(creator: Creator) -> None:
 
 
 if __name__ == "__main__":
+
+    source = {
+        "name": "a bag of yummy orange",
+        "price": 20.0,
+        "color": "#FFA500",
+        "origin": "New Zealand",
+        "quantity": 30,
+        "remarks": [
+            {
+                "company": "Fruity Monday",
+                "description": "An orange a day keeps a doctor away",
+                "discount": 0.3,
+                "hashtag": ["orange", "fruit"],
+                "organic": True,
+                "promotion_code": "yumyum",
+                "promotion_until": "2022-12-31",
+                "seller": "Mr. Brown",
+            }
+        ],
+    }
+
     print("App: Launched with the CreateProductPayloadCreator.")
-    client_code(CreateProductPayloadCreator())
+    client_code(CreateProductPayloadCreator(source))
     print("\n")
 
     print("App: Launched with the UpdateProductPayloadCreator(Creator):.")
-    client_code(UpdateProductPayloadCreator())
+    client_code(UpdateProductPayloadCreator(source))
     print("\n")
 
     print("App: Launched with the UpsertSpecPayloadCreator(Creator):.")
-    client_code(UpsertSpecPayloadCreator())
+    client_code(UpsertSpecPayloadCreator(source))
     print("\n")
 
 
